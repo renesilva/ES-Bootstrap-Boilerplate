@@ -27,7 +27,7 @@ src/
 │           ├── style.scss
 │           ├── typography.scss
 │           └── variables.scss
-resources/
+vendor/
 ├── js/
 │   └── jquery-3.6.0.min.js
 └── scss/
