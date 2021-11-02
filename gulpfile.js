@@ -12,6 +12,7 @@ const sass = require('gulp-sass')(require('sass'));
 // watch files
 const htmlWatchFiles = './src/*.html';
 const javascriptWatchFiles = './src/assets/js/*.js';
+const vendorJavascriptFiles = './vendor/js/*.js';
 const sourceFileSass = './src/assets/scss/stylesheet.scss';
 const cssStyleWatchFiles = './src/assets/scss/**/*.scss';
 
@@ -23,6 +24,19 @@ const css = function() {
     .pipe(gulp.dest('./src/css/'))
     .pipe(browserSync.stream());
 };
+
+// Vendor JS
+const vendorJS = function() {
+  return gulp.src(vendorJavascriptFiles)
+    .pipe(changed(vendorJavascriptFiles))
+    .pipe(concat('vendors.js'))
+    .pipe(rename({
+      extname: '.min.js',
+    }))
+    .pipe(gulp.dest('./src/js/'))
+    .pipe(browserSync.stream());
+};
+
 
 // JS
 const js = function() {
@@ -55,5 +69,5 @@ gulp.task('browser-sync', function() {
   });
 });
 
-gulp.task('build',  gulp.parallel(css, js,));
-gulp.task('default', gulp.parallel(css, js, 'browser-sync', watchGulp));
+gulp.task('build',  gulp.parallel(css, js, vendorJS));
+gulp.task('default', gulp.parallel(css, js, vendorJS, 'browser-sync', watchGulp));
