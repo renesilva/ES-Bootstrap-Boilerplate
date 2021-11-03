@@ -2,8 +2,7 @@ node_modules/
 build/
 
 ## COMPILACION
-/src/js/*
-/src/css/*
+/src/static/*
 
 ## Visual Studio code
 .vscode/*

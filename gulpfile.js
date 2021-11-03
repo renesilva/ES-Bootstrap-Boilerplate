@@ -21,7 +21,7 @@ const css = function() {
   return gulp.src(sourceFileSass)    
     .pipe(changed(cssStyleWatchFiles))
     .pipe(sass.sync().on('error', sass.logError))
-    .pipe(gulp.dest('./src/css/'))
+    .pipe(gulp.dest('./src/static/css/'))
     .pipe(browserSync.stream());
 };
 
@@ -33,7 +33,7 @@ const vendorJS = function() {
     .pipe(rename({
       extname: '.min.js',
     }))
-    .pipe(gulp.dest('./src/js/'))
+    .pipe(gulp.dest('./src/static/js/'))
     .pipe(browserSync.stream());
 };
 
@@ -47,7 +47,7 @@ const js = function() {
     .pipe(rename({
       extname: '.min.js',
     }))
-    .pipe(gulp.dest('./src/js/'))
+    .pipe(gulp.dest('./src/static/js/'))
     .pipe(browserSync.stream());
 };
 
