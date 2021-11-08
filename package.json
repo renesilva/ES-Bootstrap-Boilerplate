@@ -18,5 +18,10 @@
   },
   "devDependencies": {
     "prettier": "2.4.1"
-  }
+  },
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/renesilva/ES-Bootstrap-jQuery-Boilerplate.git"
+  },
+  "license": "SEE LICENSE IN LICENSE"
 }
