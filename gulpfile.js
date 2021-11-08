@@ -16,6 +16,7 @@ const vendorJavascriptFiles = './vendor/js/*.js';
 const mapsVendorJavascriptFiles = './vendor/js/*.js.map';
 const sourceFileSass = './src/assets/scss/stylesheet.scss';
 const cssStyleWatchFiles = './src/assets/scss/**/*.scss';
+const vendorFontsFiles = './vendor/fonts/**/*';
 
 // CSS
 const css = function() {
@@ -43,6 +44,14 @@ const mapsVendorJS = function() {
   return gulp.src(mapsVendorJavascriptFiles)
     .pipe(changed(mapsVendorJavascriptFiles))
     .pipe(gulp.dest('./src/static/js/'))
+    .pipe(browserSync.stream());
+};
+
+// Vendor Fonts
+const vendorFonts = function() {
+  return gulp.src(vendorFontsFiles)
+    .pipe(changed(vendorFontsFiles))
+    .pipe(gulp.dest('./src/static/fonts/'))
     .pipe(browserSync.stream());
 };
 
@@ -77,5 +86,5 @@ gulp.task('browser-sync', function() {
   });
 });
 
-gulp.task('build',  gulp.parallel(css, js, vendorJS, mapsVendorJS));
-gulp.task('default', gulp.parallel(css, js, vendorJS, mapsVendorJS, 'browser-sync', watchGulp));
+gulp.task('build',  gulp.parallel(css, js, vendorJS, mapsVendorJS, vendorFonts));
+gulp.task('default', gulp.parallel(css, js, vendorJS, mapsVendorJS, vendorFonts, 'browser-sync', watchGulp));
