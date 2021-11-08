@@ -13,6 +13,7 @@ const sass = require('gulp-sass')(require('sass'));
 const htmlWatchFiles = './src/*.html';
 const javascriptWatchFiles = './src/assets/js/*.js';
 const vendorJavascriptFiles = './vendor/js/*.js';
+const mapsVendorJavascriptFiles = './vendor/js/*.js.map';
 const sourceFileSass = './src/assets/scss/stylesheet.scss';
 const cssStyleWatchFiles = './src/assets/scss/**/*.scss';
 
@@ -37,6 +38,13 @@ const vendorJS = function() {
     .pipe(browserSync.stream());
 };
 
+// Maps Vendor JS
+const mapsVendorJS = function() {
+  return gulp.src(mapsVendorJavascriptFiles)
+    .pipe(changed(mapsVendorJavascriptFiles))
+    .pipe(gulp.dest('./src/static/js/'))
+    .pipe(browserSync.stream());
+};
 
 // JS
 const js = function() {
@@ -69,5 +77,5 @@ gulp.task('browser-sync', function() {
   });
 });
 
-gulp.task('build',  gulp.parallel(css, js, vendorJS));
-gulp.task('default', gulp.parallel(css, js, vendorJS, 'browser-sync', watchGulp));
+gulp.task('build',  gulp.parallel(css, js, vendorJS, mapsVendorJS));
+gulp.task('default', gulp.parallel(css, js, vendorJS, mapsVendorJS, 'browser-sync', watchGulp));

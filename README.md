@@ -29,6 +29,7 @@ src/
 │           └── variables.scss
 vendor/
 ├── js/
+│   ├── bootstrap.bundle.js
 │   └── jquery-3.6.0.min.js
 └── scss/
     └── _bootstrap/
