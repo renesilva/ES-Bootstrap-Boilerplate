@@ -12,31 +12,31 @@
         <div class="col-md-6 offset-md-3 content">
           <h2 class="text-center">Horas <i class="bi bi-hourglass"></i></h2>
           <div class="row mb-3">
-            <label for="ejHorasHora" class="col-sm-2 col-form-label">Hora</label>
+            <label for="ejHorasHora" class="col-sm-2 col-form-label">Horas</label>
             <div class="col-sm-10">
-              <input type="number" class="form-control" id="ejHorasHora">
+              <input type="number" class="form-control" v-model="horas">
             </div>
           </div>
           <div class="row mb-3">
             <label for="ejHorasMinutos" class="col-sm-2 col-form-label">Minutos</label>
             <div class="col-sm-10">
-              <input type="number" class="form-control" id="ejHorasMinutos">
+              <input type="number" class="form-control" v-model="minutos">
             </div>
           </div>
           <div class="row mb-3">
             <label for="ejHorasSegundos" class="col-sm-2 col-form-label">Segundos</label>
             <div class="col-sm-10">
-              <input type="number" class="form-control" id="ejHorasSegundos">
+              <input type="number" class="form-control" v-model="segundos">
             </div>
           </div>
           <div class="row mb-3">
             <div class="col-sm-2"></div>
             <div class="col-sm-10">
-              <button class="btn btn-primary" id="ejHorasCalcular">Calcular</button>
+              <button class="btn btn-primary" @click="calcular()">Calcular</button>
             </div>
           </div>
-          <div class="alert alert-success text-center" style="display:none;">
-            <h2 id="ejHorasMensaje"></h2>
+          <div class="alert alert-success text-center" v-if="mensaje">
+            <h2>{{ mensaje }}</h2>
           </div>
         </div>
       </div>
