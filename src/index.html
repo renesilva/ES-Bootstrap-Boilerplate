@@ -56,25 +56,23 @@
                     type="text"
                     class="form-control"
                     id="ejListaNombre"
+                    ref="ejListaNombre"
                     placeholder="Nombre del producto"
+                    v-model="itemInput"
                   />
                   <label for="ejListaNombre">Nombre del producto</label>
                 </div>
               </div>
               <div class="col-5">
-                <button class="btn btn-lg btn-primary" id="ejListaAdicionar">
+                <button class="btn btn-lg btn-primary" @click="adicionarItem()">
                   Adicionar producto
                 </button>
               </div>
             </div>
-            <ul class="list-group" id="ejListaUlItems">
-              <li class="list-group-item">
-                Huevos
-                <button class="btn ej-lista-btn-quitar"><i class="bi bi-x-circle-fill"></i></button>
-              </li>
-              <li class="list-group-item">
-                Leche
-                <button class="btn ej-lista-btn-quitar"><i class="bi bi-x-circle-fill"></i></button>
+            <ul class="list-group">
+              <li class="list-group-item" v-for="item in items" :key="index">
+                {{item}}
+                <i class="bi bi-x-circle-fill" @click="eliminarItem(index)"></i>
               </li>
             </ul>
           </div>

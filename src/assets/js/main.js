@@ -61,9 +61,23 @@ Vue.createApp(EjHoras).mount('#ejercicio-horas');
 // Vue Ejercicio Lista de Compras
 const EjListaCompras = {
   data() {
-    return {};
+    return {
+      itemInput: '',
+      items: ['Huevos', 'Leche'],
+    };
   },
-  methods: {},
+  methods: {
+    adicionarItem() {
+      if (this.itemInput !== '') {
+        this.items.push(this.itemInput);
+        this.itemInput = '';
+        this.$refs.ejListaNombre.focus();
+      }
+    },
+    eliminarItem(index) {
+      this.items.splice(index, 1);
+    },
+  },
 };
 Vue.createApp(EjListaCompras).mount('#ejercicio-lista-compras');
 
