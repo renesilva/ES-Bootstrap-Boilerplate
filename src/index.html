@@ -8,27 +8,96 @@
   </head>
   <body>
     <div class="container">
-      <div class="row">
-        <div class="col-12 content">
-          <h1>Test <i class="bi bi-arrow-right-circle"></i></h1>
-          <div class="dropdown">
-            <button
-              class="btn btn-secondary dropdown-toggle"
-              type="button"
-              id="dropdownMenuButton1"
-              data-bs-toggle="dropdown"
-            >
-              Dropdown button
-            </button>
-            <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
-              <li><a class="dropdown-item" href="#">Action</a></li>
-              <li><a class="dropdown-item" href="#">Another action</a></li>
-              <li><a class="dropdown-item" href="#">Something else here</a></li>
-            </ul>
+      <div class="row" id="ejercicio-horas">
+        <div class="col-md-6 offset-md-3 content">
+          <h2 class="text-center">Horas <i class="bi bi-hourglass"></i></h2>
+          <div class="row mb-3">
+            <label for="ejHorasHora" class="col-sm-2 col-form-label">Hora</label>
+            <div class="col-sm-10">
+              <input type="number" class="form-control" id="ejHorasHora">
+            </div>
+          </div>
+          <div class="row mb-3">
+            <label for="ejHorasMinutos" class="col-sm-2 col-form-label">Minutos</label>
+            <div class="col-sm-10">
+              <input type="number" class="form-control" id="ejHorasMinutos">
+            </div>
+          </div>
+          <div class="row mb-3">
+            <label for="ejHorasSegundos" class="col-sm-2 col-form-label">Segundos</label>
+            <div class="col-sm-10">
+              <input type="number" class="form-control" id="ejHorasSegundos">
+            </div>
+          </div>
+          <div class="row mb-3">
+            <div class="col-sm-2"></div>
+            <div class="col-sm-10">
+              <button class="btn btn-primary" id="ejHorasCalcular">Calcular</button>
+            </div>
+          </div>
+          <div class="alert alert-success text-center" style="display:none;">
+            <h2 id="ejHorasMensaje"></h2>
           </div>
         </div>
       </div>
-    </div>
+      
+      <div class="row" id="ejercicio-lista-compras">
+        <div class="col-md-6 offset-md-3 content text-center">
+          <h2 class="my-4">Listado de compras <i class="bi bi-cart-check"></i></h2>
+          <div class="row">
+            <div class="col-7">
+              <div class="form-floating mb-3">
+                <input type="text" class="form-control" id="ejListaNombre" placeholder="Nombre del producto">
+                <label for="ejListaNombre">Nombre del producto</label>
+              </div>    
+            </div>
+            <div class="col-5">
+              <button class="btn btn-lg btn-primary" id="ejListaAdicionar">Adicionar producto</button>
+            </div>
+          </div>
+          <ul class="list-group" id="ejListaUlItems">
+            <li class="list-group-item">
+              Huevos
+              <button class="btn ej-lista-btn-quitar"><i class="bi bi-x-circle-fill"></i></button>
+            </li>
+            <li class="list-group-item">
+              Leche
+              <button class="btn ej-lista-btn-quitar"><i class="bi bi-x-circle-fill"></i></button>
+            </li>
+          </ul>
+          
+        </div>
+      </div>
+
+      <div class="row" id="ejercicio-calculadora">
+        <div class="col-md-8 offset-md-2 content text-center">
+          <h2 class="my-4">Calculadora <i class="bi bi-calculator"></i></h2>
+          <div class="row">
+            <div class="col">
+              <input type="number" class="form-control" placeholder="" id="ejCalculadoraInput1">
+            </div>
+            <div class="col">
+              <input type="number" class="form-control" placeholder="" id="ejCalculadoraInput2">
+            </div>
+            <div class="col">
+              <select class="form-select" id="ejCalculadoraOperador">
+                <option value="sumar">Sumar</option>
+                <option value="multiplicar">Multiplicar</option>
+              </select>
+            </div>
+            <div class="col">
+              <button class="btn btn-primary" id="ejCalculadoraCalcular">Calcular</button>
+            </div>
+            <div class="col">
+              <input type="number" class="form-control" placeholder="Resultado ..." readonly id="ejCalculadoraResultado">
+            </div>
+          </div>
+        </div>
+      </div>
+
+
+
+    </div> <!-- /.container -->
     <script src="static/js/vendors.min.js"></script>
     <script src="static/js/bundle.min.js"></script>
   </body>
