@@ -20,7 +20,7 @@ const vendorFontsFiles = './vendor/fonts/**/*';
 
 // CSS
 const css = function() {
-  return gulp.src(sourceFileSass)    
+  return gulp.src(sourceFileSass)
     .pipe(changed(cssStyleWatchFiles))
     .pipe(sass.sync().on('error', sass.logError))
     .pipe(gulp.dest('./src/static/css/'))
@@ -31,10 +31,6 @@ const css = function() {
 const vendorJS = function() {
   return gulp.src(vendorJavascriptFiles)
     .pipe(changed(vendorJavascriptFiles))
-    .pipe(concat('vendors.js'))
-    .pipe(rename({
-      extname: '.min.js',
-    }))
     .pipe(gulp.dest('./src/static/js/'))
     .pipe(browserSync.stream());
 };
@@ -55,24 +51,11 @@ const vendorFonts = function() {
     .pipe(browserSync.stream());
 };
 
-// JS
-const js = function() {
-  return gulp.src(javascriptWatchFiles)
-    .pipe(changed(javascriptWatchFiles))
-    .pipe(concat('bundle.js'))
-    // .pipe(uglify({ toplevel: true, 'mangle': { reserved: ['jQuery'] } }))
-    .pipe(rename({
-      extname: '.min.js',
-    }))
-    .pipe(gulp.dest('./src/static/js/'))
-    .pipe(browserSync.stream());
-};
-
 // watch gulp
 const watchGulp = function() {
   gulp.watch(htmlWatchFiles).on('change', browserSync.reload);
   gulp.watch(cssStyleWatchFiles, css);
-  gulp.watch(javascriptWatchFiles, js);
+  gulp.watch(javascriptWatchFiles).on('change', browserSync.reload);
 };
 exports.watchGulp = watchGulp;
 
@@ -86,5 +69,5 @@ gulp.task('browser-sync', function() {
   });
 });
 
-gulp.task('build',  gulp.parallel(css, js, vendorJS, mapsVendorJS, vendorFonts));
-gulp.task('default', gulp.parallel(css, js, vendorJS, mapsVendorJS, vendorFonts, 'browser-sync', watchGulp));
+gulp.task('build',  gulp.parallel(css, vendorJS, mapsVendorJS, vendorFonts));
+gulp.task('default', gulp.parallel(css, vendorJS, mapsVendorJS, vendorFonts, 'browser-sync', watchGulp));
