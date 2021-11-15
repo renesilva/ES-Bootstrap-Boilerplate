@@ -1,6 +1,6 @@
-## Eressea Solutions Bootstrap/jQuery Boilerplate
+## Eressea Solutions Bootstrap/Vue Boilerplate
 
-Proyecto base para codificar HTML con Bootstrap y jQuery.
+Proyecto base para codificar HTML con Bootstrap y Vue.
 
 ## Instalación e inicio
 
@@ -15,24 +15,46 @@ Para inicializar el programa se debe correr los siguientes pasos:
 ## Archivos
 
 ```text
-src/
-├── index.html
-├── assets/
-│   ├── images/
-│   ├── js/
-│   │   └── main.js
-│   └── scss/
-│       ├── stylesheet.scss
-│       └── styles/
-│           ├── style.scss
-│           ├── typography.scss
-│           └── variables.scss
-vendor/
-├── js/
-│   ├── bootstrap.bundle.js
-│   └── jquery-3.6.0.min.js
-└── scss/
-    └── _bootstrap/
+/
+┣ src/
+┃ ┣ assets/
+┃ ┃ ┣ images/
+┃ ┃ ┣ js/
+┃ ┃ ┃ ┗ main.js
+┃ ┃ ┗ scss/
+┃ ┃   ┣ styles/
+┃ ┃ ┃ ┃ ┣ style.scss
+┃ ┃ ┃ ┃ ┣ typography.scss
+┃ ┃ ┃ ┃ ┗ variables.scss
+┃ ┃   ┗ stylesheet.scss
+┃ ┣ static/
+┃ ┃ ┣ css/
+┃ ┃ ┃ ┣ stylesheet.css
+┃ ┃ ┃ ┗ vendors.css
+┃ ┃ ┣ fonts/
+┃ ┃ ┃ ┣ bootstrap-icons.woff
+┃ ┃ ┃ ┗ bootstrap-icons.woff2
+┃ ┃ ┗ js/
+┃ ┃   ┣ axios.js
+┃ ┃   ┣ bootstrap.bundle.js
+┃ ┃   ┣ bootstrap.bundle.js.map
+┃ ┃   ┗ vue.global.prod.js
+┃ ┗ index.html
+┗ vendor/
+  ┣ css/
+  ┃ ┗ vendor.css
+  ┣ fonts/
+  ┃ ┣ bootstrap-icons.woff
+  ┃ ┗ bootstrap-icons.woff2
+  ┣ js/
+  ┃ ┣ axios.js
+  ┃ ┣ bootstrap.bundle.js
+  ┃ ┣ bootstrap.bundle.js.map
+  ┃ ┗ vue.global.prod.js
+  ┗ scss/
+    ┣ _bootstrap/
+    ┗ _bootstrap_icons/
+
 ```
 
 ## Copyright y licencia
