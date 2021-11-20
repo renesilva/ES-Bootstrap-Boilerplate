@@ -15,47 +15,27 @@
       <div class="row">
         <div class="col-12 content">
           <div id="app">
-            <div id="carouselEj2" class="carousel slide" data-bs-ride="carousel">
+            <div id="carouselEj2" class="carousel slide">
               <div class="carousel-indicators">
-                <button
-                  type="button"
-                  data-bs-target="#carouselEj2"
-                  data-bs-slide-to="0"
-                  class="active"
-                ></button>
-                <button
-                  type="button"
-                  data-bs-target="#carouselEj2"
-                  data-bs-slide-to="1"
-                ></button>
-                <button
-                  type="button"
-                  data-bs-target="#carouselEj2"
-                  data-bs-slide-to="2"
-                ></button>
+                <template v-for='(slide, index) in slides'>
+                  <button
+                    type="button"
+                    data-bs-target="#carouselEj2"
+                    :data-bs-slide-to="index"
+                    :class="index === 0 ? 'active': ''"
+                  ></button>
+                </template>
               </div>
               <div class="carousel-inner">
-                <div class="carousel-item active">
-                  <img src="assets/images/code-1.jpg" class="d-block w-100" alt="..." />
-                  <div class="carousel-caption d-none d-md-block">
-                    <h5>Primero!</h5>
-                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. </p>
+                <template v-for='(slide, index) in slides'>
+                  <div class="carousel-item" :class="index === 0 ? 'active': ''">
+                    <img :src="slide.image" class="d-block w-100"/>
+                    <div class="carousel-caption d-none d-md-block">
+                      <h5>{{slide.title}}</h5>
+                      <p>{{slide.description}}</p>
+                    </div>
                   </div>
-                </div>
-                <div class="carousel-item">
-                  <img src="assets/images/code-2.jpg" class="d-block w-100" alt="..." />
-                  <div class="carousel-caption d-none d-md-block">
-                    <h5>Segundo!</h5>
-                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. </p>
-                  </div>
-                </div>
-                <div class="carousel-item">
-                  <img src="assets/images/code-3.jpg" class="d-block w-100" alt="..." />
-                  <div class="carousel-caption d-none d-md-block">
-                    <h5>Tercero!</h5>
-                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. </p>
-                  </div>
-                </div>
+                </template>
               </div>
               <button
                 class="carousel-control-prev"
@@ -64,7 +44,7 @@
                 data-bs-slide="prev"
               >
                 <span class="carousel-control-prev-icon"></span>
-                <span class="visually-hidden">Previous</span>
+                <span class="visually-hidden">Anterior</span>
               </button>
               <button
                 class="carousel-control-next"
@@ -73,7 +53,7 @@
                 data-bs-slide="next"
               >
                 <span class="carousel-control-next-icon"></span>
-                <span class="visually-hidden">Next</span>
+                <span class="visually-hidden">Siguiente</span>
               </button>
             </div>
           </div>
