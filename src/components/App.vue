@@ -1,5 +1,4 @@
 <template>
-
   <div class="container">
     <div class="row">
       <div class="col-12 content">
@@ -23,7 +22,6 @@
       </div>
     </div>
   </div>
-
 </template>
 <script>
 export default {
@@ -35,15 +33,11 @@ export default {
   methods: {},
   computed: {},
   watch: {},
-  mounted() {
-  },
-  components: {}
+  mounted() {},
   // Se pueden utilizar estos hooks para el ciclo de vida
   // beforeCreate, created, beforeMount, mounted, beforeUpdate, updated
   // activated, deactivated, beforeUnmount, unmounted
 };
 </script>
 
-<style scoped>
-
-</style>
+<style scoped></style>
