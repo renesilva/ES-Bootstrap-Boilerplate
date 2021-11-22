@@ -12,6 +12,7 @@ const sass = require('gulp-sass')(require('sass'));
 // watch files
 const htmlWatchFiles = './src/*.html';
 const javascriptWatchFiles = './src/assets/js/*.js';
+const vueWatchFiles = './src/components/**/*.vue';
 const sourceFileSass = './src/assets/scss/stylesheet.scss';
 const sassStyleWatchFiles = './src/assets/scss/**/*.scss';
 const vendorMapsJavascriptFiles = './vendor/js/*.map';
@@ -76,6 +77,7 @@ const watchGulp = function () {
   gulp.watch(htmlWatchFiles).on('change', browserSync.reload);
   gulp.watch(sassStyleWatchFiles, sassFiles);
   gulp.watch(javascriptWatchFiles).on('change', browserSync.reload);
+  gulp.watch(vueWatchFiles).on('change', browserSync.reload);
 };
 exports.watchGulp = watchGulp;
 
