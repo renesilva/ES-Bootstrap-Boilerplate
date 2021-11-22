@@ -19,6 +19,7 @@
             <li><a class="dropdown-item" href="#">Something else here</a></li>
           </ul>
         </div>
+        <botones-component></botones-component>
       </div>
     </div>
   </div>
@@ -36,6 +37,7 @@ export default {
   watch: {},
   mounted() {
   },
+  components: {}
   // Se pueden utilizar estos hooks para el ciclo de vida
   // beforeCreate, created, beforeMount, mounted, beforeUpdate, updated
   // activated, deactivated, beforeUnmount, unmounted

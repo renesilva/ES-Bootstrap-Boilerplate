@@ -21,6 +21,7 @@
     },
     template: '<app-component></app-component>',
   });
+  app.component('botones-component', Vue.defineAsyncComponent(() => loadModule('./components/Boton.vue', options)));
   app.mount('#app');
 </script>
 </body>
