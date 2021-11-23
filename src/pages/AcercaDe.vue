@@ -1,5 +1,5 @@
 <template>
-
+  <h1>Acerca de</h1>
 </template>
 <script>
 export default {
@@ -9,6 +9,7 @@ export default {
   methods: {},
   computed: {},
   watch: {},
+  created() {},
   mounted() {},
   // Se pueden utilizar estos hooks para el ciclo de vida
   // beforeCreate, created, beforeMount, mounted, beforeUpdate, updated
@@ -16,6 +17,4 @@ export default {
 };
 </script>
 
-<style scoped>
-
-</style>
+<style scoped></style>

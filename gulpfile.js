@@ -12,12 +12,9 @@ const sass = require('gulp-sass')(require('sass'));
 // watch files
 const htmlWatchFiles = './src/*.html';
 const javascriptWatchFiles = './src/assets/js/*.js';
-const vueWatchFiles = './src/components/**/*.vue';
+const vueWatchFiles = './src/**/*.vue';
 const sourceFileSass = './src/assets/scss/stylesheet.scss';
 const sassStyleWatchFiles = './src/assets/scss/**/*.scss';
-const vendorMapsJavascriptFiles = './vendor/js/*.map';
-const vendorJavascriptFiles = './vendor/js/*.js';
-const vendorCssFiles = './vendor/css/**/*.css';
 const vendorFontsFiles = './vendor/fonts/**/*';
 
 // SASS
@@ -27,39 +24,6 @@ const sassFiles = function () {
     .pipe(changed(sassStyleWatchFiles))
     .pipe(sass.sync().on('error', sass.logError))
     .pipe(gulp.dest('./src/static/css/'))
-    .pipe(browserSync.stream());
-};
-
-// Vendor CSS
-const vendorCss = function () {
-  return gulp
-    .src(vendorCssFiles)
-    .pipe(changed(vendorCssFiles))
-    .pipe(concat('vendors.css'))
-    .pipe(
-      rename({
-        extname: '.css',
-      }),
-    )
-    .pipe(gulp.dest('./src/static/css/'))
-    .pipe(browserSync.stream());
-};
-
-// Vendor JS
-const vendorJS = function () {
-  return gulp
-    .src(vendorJavascriptFiles)
-    .pipe(changed(vendorJavascriptFiles))
-    .pipe(gulp.dest('./src/static/js/'))
-    .pipe(browserSync.stream());
-};
-
-// Vendor Maps JS
-const vendorMapsJS = function () {
-  return gulp
-    .src(vendorMapsJavascriptFiles)
-    .pipe(changed(vendorMapsJavascriptFiles))
-    .pipe(gulp.dest('./src/static/js/'))
     .pipe(browserSync.stream());
 };
 
@@ -90,14 +54,11 @@ gulp.task('browser-sync', function () {
   });
 });
 
-gulp.task('build', gulp.parallel(sassFiles, vendorCss, vendorJS, vendorMapsJS, vendorFonts));
+gulp.task('build', gulp.parallel(sassFiles, vendorFonts));
 gulp.task(
   'default',
   gulp.parallel(
     sassFiles,
-    vendorCss,
-    vendorJS,
-    vendorMapsJS,
     vendorFonts,
     'browser-sync',
     watchGulp,
