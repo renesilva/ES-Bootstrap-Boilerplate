@@ -1,6 +1,6 @@
-## Eressea Solutions Bootstrap/jQuery Boilerplate
+## Eressea Solutions Bootstrap Boilerplate
 
-Proyecto base para codificar HTML con Bootstrap y jQuery.
+Proyecto base para codificar HTML con Bootstrap
 
 ## Instalación e inicio
 
