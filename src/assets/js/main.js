@@ -1,8 +1,1 @@
-(($) => {
-  $(() => {
-    // Código
-    $(document).ready(() => {
-      console.log('.');
-    });
-  });
-})(jQuery);
+console.log('Hello from assets/js/main.js');
