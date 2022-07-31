@@ -35,4 +35,4 @@ vendor/
 ```
 
 ## Copyright y licencia
-Código lanzando con la licencia [MIT License](https://github.com/renesilva/ES-Bootstrap-jQuery-Boilerplate/blob/master/LICENSE).
+Código lanzando con la licencia [MIT License](https://github.com/renesilva/ES-Bootstrap-Boilerplate/blob/master/LICENSE).
