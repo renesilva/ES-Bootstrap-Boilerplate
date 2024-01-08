@@ -27,11 +27,6 @@ src/
 │           ├── style.scss
 │           ├── typography.scss
 │           └── variables.scss
-vendor/
-├── js/
-│   └── bootstrap.bundle.js
-└── scss/
-    └── _bootstrap/
 ```
 
 ## Copyright y licencia

@@ -9,76 +9,65 @@ const browserSync = require('browser-sync').create();
 const sass = require('gulp-sass')(require('sass'));
 // const uglify = require('gulp-uglify');
 
-// watch files
+// watch files html
 const htmlWatchFiles = './src/*.html';
+// watch files js
 const javascriptWatchFiles = './src/assets/js/*.js';
-const vendorJavascriptFiles = './vendor/js/*.js';
-const mapsVendorJavascriptFiles = './vendor/js/*.js.map';
+// watch files css
 const sourceFileSass = './src/assets/scss/stylesheet.scss';
 const cssStyleWatchFiles = './src/assets/scss/**/*.scss';
-const vendorFontsFiles = './vendor/fonts/**/*';
+const bootstrapIconsFontFiles = './node_modules/bootstrap-icons/font/fonts/**/*';
 
 // CSS
-const css = function() {
-  return gulp.src(sourceFileSass)    
-    .pipe(changed(cssStyleWatchFiles))
-    .pipe(sass.sync().on('error', sass.logError))
-    .pipe(gulp.dest('./src/static/css/'))
-    .pipe(browserSync.stream());
-};
+const css = () => gulp.src(sourceFileSass)
+  .pipe(changed(cssStyleWatchFiles))
+  .pipe(sass.sync().on('error', sass.logError))
+  .pipe(gulp.dest('./src/static/css/'))
+  .pipe(browserSync.stream());
 
-// Vendor JS
-const vendorJS = function() {
-  return gulp.src(vendorJavascriptFiles)
-    .pipe(changed(vendorJavascriptFiles))
-    .pipe(concat('vendors.js'))
-    .pipe(rename({
-      extname: '.min.js',
-    }))
-    .pipe(gulp.dest('./src/static/js/'))
-    .pipe(browserSync.stream());
-};
+// Bootstrap JS
+// Bootstrap Bundle JS
+const bootstrapJS = () => gulp.src('./node_modules/bootstrap/dist/js/bootstrap.bundle.js')
+  .pipe(concat('bootstrap.bundle.js'))
+  .pipe(gulp.dest('./src/static/js/'))
+  .pipe(browserSync.stream());
+// Bootstrap Bundle Maps JS
+const bootstrapMapJS = () => gulp.src('./node_modules/bootstrap/dist/js/bootstrap.bundle.js.map')
+  .pipe(gulp.dest('./src/static/js/'))
+  .pipe(browserSync.stream());
 
-// Maps Vendor JS
-const mapsVendorJS = function() {
-  return gulp.src(mapsVendorJavascriptFiles)
-    .pipe(changed(mapsVendorJavascriptFiles))
-    .pipe(gulp.dest('./src/static/js/'))
-    .pipe(browserSync.stream());
-};
+// Axios JS
+const axiosJS = () => gulp.src('./node_modules/axios/dist/axios.js')
+  .pipe(concat('axios.js'))
+  .pipe(gulp.dest('./src/static/js/'))
+  .pipe(browserSync.stream());
+// Bootstrap Bundle Maps JS
+const axiosMapJS = () => gulp.src('./node_modules/axios/dist/axios.js.map')
+  .pipe(gulp.dest('./src/static/js/'))
+  .pipe(browserSync.stream());
 
-// Vendor Fonts
-const vendorFonts = function() {
-  return gulp.src(vendorFontsFiles)
-    .pipe(changed(vendorFontsFiles))
-    .pipe(gulp.dest('./src/static/fonts/'))
-    .pipe(browserSync.stream());
-};
+// Bootstrap Fonts
+const bootstrapIconFonts = () => gulp.src(bootstrapIconsFontFiles)
+  .pipe(changed(bootstrapIconsFontFiles))
+  .pipe(gulp.dest('./src/static/css/fonts/'))
+  .pipe(browserSync.stream());
 
-// JS
-const js = function() {
-  return gulp.src(javascriptWatchFiles)
-    .pipe(changed(javascriptWatchFiles))
-    .pipe(concat('bundle.js'))
-    // .pipe(uglify({ toplevel: true, 'mangle': { reserved: ['jQuery'] } }))
-    .pipe(rename({
-      extname: '.min.js',
-    }))
-    .pipe(gulp.dest('./src/static/js/'))
-    .pipe(browserSync.stream());
-};
+//JS
+const js = () => gulp.src(javascriptWatchFiles)
+  .pipe(changed(javascriptWatchFiles))
+  .pipe(browserSync.stream());
 
 // watch gulp
-const watchGulp = function() {
+const watchGulp = () => {
   gulp.watch(htmlWatchFiles).on('change', browserSync.reload);
   gulp.watch(cssStyleWatchFiles, css);
   gulp.watch(javascriptWatchFiles, js);
 };
+
 exports.watchGulp = watchGulp;
 
-
 // Subir al servidor
-gulp.task('browser-sync', function() {
+gulp.task('browser-sync', () => {
   browserSync.init({
     server: {
       baseDir: './src/',
@@ -86,5 +75,5 @@ gulp.task('browser-sync', function() {
   });
 });
 
-gulp.task('build',  gulp.parallel(css, js, vendorJS, mapsVendorJS, vendorFonts));
-gulp.task('default', gulp.parallel(css, js, vendorJS, mapsVendorJS, vendorFonts, 'browser-sync', watchGulp));
+gulp.task('build',  gulp.parallel(css, js, bootstrapJS, bootstrapMapJS, axiosJS, axiosMapJS, bootstrapIconFonts));
+gulp.task('default', gulp.parallel(css, js, bootstrapJS, bootstrapMapJS, axiosJS, axiosMapJS, bootstrapIconFonts, 'browser-sync', watchGulp));
